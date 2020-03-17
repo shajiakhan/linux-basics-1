@@ -1,0 +1,13 @@
+---
+# basic file system tasks
+
+- name: Create directory "linux-basics" under user's home directory
+  file:
+    path: "{{ linux_basics_dir_path }}"
+    state: directory
+
+- name: Set "linux-basics" directory's mode to 0755
+  file:
+    path: "{{ linux_basics_dir_path }}"
+    mode: '0755'
+    
