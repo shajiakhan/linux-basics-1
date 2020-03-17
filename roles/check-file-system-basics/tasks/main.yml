@@ -3,11 +3,11 @@
 
 # Determine if a path exists and is a directory.  Note that we need to test
 # both that p.stat.isdir actually exists, and also that it's set to true.
-- name: CHECK - Create directory {{ lab_dir_name }} under {{ ansible_user_dir }} directory
+- name: Looking for {{ lab_dir_name }} under {{ ansible_user_dir }} directory
   stat:
     path: "{{ lab_dir_path }}"
   register: p
-  
+- name: Checking...  
   assert:
     that:
       - p.stat.isdir is defined and p.stat.isdir
