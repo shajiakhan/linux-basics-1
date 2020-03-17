@@ -5,8 +5,11 @@
   become: yes
 
   tasks:
+    - debug:
+        var: ansible_nodename
+    - debug:
+        var: ansible_user_dir 
     - import_role:
         name: file-system-basics
       tags:
         - file-system-basics
-        
