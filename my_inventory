@@ -1,4 +1,4 @@
 # inventory file
 
 [this_machine]
-localhost
+localhost ansible_connection=local
