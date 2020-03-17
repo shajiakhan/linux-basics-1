@@ -2,7 +2,6 @@
 # Checks or performs Linux-Basics-1 lab tasks
 
 - hosts: this_machine
-  become: yes
 
   tasks:
     - debug:
