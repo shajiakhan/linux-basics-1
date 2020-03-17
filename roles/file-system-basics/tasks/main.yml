@@ -19,7 +19,7 @@
 - name: Set {{ lab_dir_path }}/{{ ft1_local_path }} directory's mode to 0700
   file:
     path: "{{ lab_dir_path }}/{{ ft1_local_path }}"
-    mode: '0755'
+    mode: '0700'
 
 - name: Touch file {{ ft1_file_name }} in {{ lab_dir_path }}/{{ ft1_local_path }}, with 0640 permissions
   file:
