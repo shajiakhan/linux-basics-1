@@ -18,7 +18,7 @@
 - name: Checking directory permissions...
   assert:
     that:
-      - p.stat.mode == {{ lab_dir_mode }}
+      - p.stat.mode == "{{ lab_dir_mode }}"
     fail_msg: "FAIL - Permissions {{ lab_dir_path }} not {{ lab_dir_mode }}"
     success_msg: "PASS - Permissions {{ lab_dir_path }} are {{ lab_dir_mode }}"
   ignore_errors: true
