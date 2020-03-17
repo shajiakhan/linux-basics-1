@@ -2,6 +2,7 @@
 
 lab_dir_name: "lab5"
 lab_dir_path: "{{ ansible_user_dir }}/{{ lab_dir_name }}"
+lab_dir_mode: "0755"
 
 #ft1 = File task 1 and so on...
 ft1_file_name: "local.conf"
