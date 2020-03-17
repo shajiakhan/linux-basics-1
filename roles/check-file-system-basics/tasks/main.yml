@@ -13,9 +13,12 @@
       - p.stat.isdir is defined and p.stat.isdir
     fail_msg: "FAIL - Path {{ lab_dir_path }} does not exist and is not a directory"
     success_msg: "PASS - Path {{ lab_dir_path }} exists and is a directory"
+  ignore_errors: true
+
 - name: Checking directory permissions...
   assert:
     that:
       - p.stat.mode is '0755'
     fail_msg: "FAIL - Permissions {{ lab_dir_path }} not {{ lab_dir_mode }}"
     success_msg: "PASS - Permissions {{ lab_dir_path }} are {{ lab_dir_mode }}"
+  ignore_errors: true
