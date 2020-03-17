@@ -12,3 +12,7 @@
         name: file-system-basics
       tags:
         - file-system-basics
+    - import_role:
+        name: check-file-system-basics
+      tags:
+        - check-file-system-basics
