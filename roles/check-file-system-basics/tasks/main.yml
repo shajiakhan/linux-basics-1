@@ -9,6 +9,7 @@
   register: p
 - name: Checking if directory exists...
   assert:
+    quiet: true
     that:
       - p.stat.isdir is defined and p.stat.isdir
     fail_msg: "FAIL - Path {{ lab_dir_path }} does not exist and is not a directory"
@@ -17,6 +18,7 @@
 
 - name: Checking directory permissions...
   assert:
+    quiet: true
     that:
       - p.stat.isdir is defined and p.stat.isdir and p.stat.mode == "{{ lab_dir_mode }}"
     fail_msg: "FAIL - Permissions {{ lab_dir_path }} not {{ lab_dir_mode }}"
