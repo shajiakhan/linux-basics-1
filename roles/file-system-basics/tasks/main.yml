@@ -21,10 +21,10 @@
     path: "{{ lab_dir_path }}/{{ ft1_local_path }}"
     mode: '0700'
 
-- name: Touch file {{ ft1_file_name }} in {{ lab_dir_path }}/{{ ft1_local_path }}, with 0640 permissions
+- name: Touch file {{ ft1_file_name }} in {{ lab_dir_path }}/{{ ft1_local_path }}
   file:
     path: "{{ lab_dir_path }}/{{ ft1_local_path }}/{{ ft1_file_name }}"
-    state: file
+    state: touch
     #modification_time: preserve #but dont change times, this makes the task idempotent
     #access_time: preserve    #but dont change times, this makes the task idempotent
 
