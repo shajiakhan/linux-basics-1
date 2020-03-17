@@ -1,4 +1,4 @@
 ---
   #{{ ansible_user_id }}
-  # linux_basics_dir_path: "{ ansible_user_dir }/linux-basics-lab"
-  linux_basics_dir_path: {{ ansible_facts['user_dir'] }}/linux-basics-lab
+  linux_basics_dir_path: "{{ ansible_user_dir }}/linux-basics-lab"
+  #linux_basics_dir_path: "{{ ansible_facts['user_dir'] }}/linux-basics-lab"
