@@ -3,11 +3,18 @@
 
 - name: Create directory "linux-basics" under user's home directory
   file:
-    path: "{{ linux_basics_dir_path }}"
+    path: "{{ lab_dir_path }}"
     state: directory
 
 - name: Set "linux-basics" directory's mode to 0755
   file:
-    path: "{{ linux_basics_dir_path }}"
+    path: "{{ lab_dir_path }}"
     mode: '0755'
-    
+
+- name: Touch file {{ ft1_file_name }} in {{ lab_dir_path }}/{{ ft1_local_path }}, with 0640 permissions
+  file:
+    path: "{{ lab_dir_path }}/{{ ft1_local_path }}/{{ ft1_file_name }}"
+    state: touch
+    mode: u+rw,g-wx,o-rwx
+    modification_time: preserve #but dont change times, this makes the task idempotent
+    access_time: preserve    #but dont change times, this makes the task idempotent

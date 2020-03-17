@@ -1,3 +1,7 @@
 ---
-  lab_folder_name: "lab5"
-  linux_basics_dir_path: "{{ ansible_user_dir }}/{{ lab_folder_name }}"
+  lab_dir_name: "lab5"
+  lab_dir_path: "{{ ansible_user_dir }}/{{ lab_dir_name }}"
+  #ft1 = File task 1 and so on...
+  ft1_file_name: "local.conf"
+  #_local_path is where do you want the file created for any file task relative to lab folder
+  ft1_local_path: "local/myetc"
