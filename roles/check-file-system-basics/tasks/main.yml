@@ -18,8 +18,8 @@
 - name: Checking directory permissions...
   assert:
     that:
-      - p.stat.mode == "{{ lab_dir_mode }}"
+      - p.stat.isdir is defined and p.stat.isdir and p.stat.mode == "{{ lab_dir_mode }}"
     fail_msg: "FAIL - Permissions {{ lab_dir_path }} not {{ lab_dir_mode }}"
     success_msg: "PASS - Permissions {{ lab_dir_path }} are {{ lab_dir_mode }}"
-  when: p.stat.isdir is defined and p.stat.isdir
+  #when: p.stat.isdir is defined and p.stat.isdir
   ignore_errors: true
