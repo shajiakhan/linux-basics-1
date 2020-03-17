@@ -1,0 +1,12 @@
+---
+# Checks or performs Linux-Basics-1 lab tasks
+
+- hosts: this_machine
+  become: yes
+
+  tasks:
+    - import_role:
+        name: file-system-basics
+      tags:
+        - file-system-basics
+        
