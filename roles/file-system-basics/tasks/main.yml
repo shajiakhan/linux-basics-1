@@ -1,14 +1,24 @@
 ---
 # basic file system tasks
 
-- name: Create directory "linux-basics" under user's home directory
+- name: Create directory {{ lab_dir_name }} under {{ ansible_user_dir }} directory
   file:
     path: "{{ lab_dir_path }}"
     state: directory
 
-- name: Set "linux-basics" directory's mode to 0755
+- name: Set {{ lab_dir_path }} directory's mode to 0755
   file:
     path: "{{ lab_dir_path }}"
+    mode: '0755'
+
+- name: Create directory {{ ft1_local_path }} under {{ lab_dir_path }}
+  file:
+    path: "{{ lab_dir_path }}/{{ ft1_local_path }}"
+    state: directory
+
+- name: Set {{ lab_dir_path }}/{{ ft1_local_path }} directory's mode to 0700
+  file:
+    path: "{{ lab_dir_path }}/{{ ft1_local_path }}"
     mode: '0755'
 
 - name: Touch file {{ ft1_file_name }} in {{ lab_dir_path }}/{{ ft1_local_path }}, with 0640 permissions
