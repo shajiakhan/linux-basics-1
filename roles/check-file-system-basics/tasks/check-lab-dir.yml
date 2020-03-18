@@ -1,0 +1,25 @@
+---
+# basic file system tasks
+
+# Determine if a path exists and is a directory.  Note that we need to test
+# both that p.stat.isdir actually exists, and also that it's set to true.
+- name: Preparing check for {{ lab_dir_name }} under {{ ansible_user_dir }} - directory tasks
+  stat:
+    path: "{{ lab_dir_path }}"
+  register: p
+- name: Checking if directory exists...
+  assert:
+    that:
+      - p.stat.isdir is defined and p.stat.isdir
+    fail_msg: "FAIL - Path {{ lab_dir_path }} does not exist and is not a directory"
+    success_msg: "PASS - Path {{ lab_dir_path }} exists and is a directory"
+  ignore_errors: true
+
+- name: Checking directory permissions...
+  assert:
+    that:
+      - p.stat.isdir is defined and p.stat.isdir and p.stat.mode == "{{ lab_dir_mode }}"
+    fail_msg: "FAIL - Permissions {{ lab_dir_path }} not {{ lab_dir_mode }}"
+    success_msg: "PASS - Permissions {{ lab_dir_path }} are {{ lab_dir_mode }}"
+  #when: p.stat.isdir is defined and p.stat.isdir
+  ignore_errors: true

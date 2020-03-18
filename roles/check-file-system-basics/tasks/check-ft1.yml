@@ -1,0 +1,47 @@
+---
+# basic file system tasks
+
+# Determine if a path exists and is a directory.  Note that we need to test
+# both that p.stat.isdir actually exists, and also that it's set to true.
+- name: Preparing check for {{ ft1_file_name }} under {{ lab_dir_path }}/{{ ft1_local_path }} - directory tasks
+  stat:
+    path: "{{ lab_dir_path }}/{{ ft1_local_path }}"
+  register: p
+- name: Checking if directory exists...
+  assert:
+    that:
+      - p.stat.isdir is defined and p.stat.isdir
+    fail_msg: "FAIL - Path {{ lab_dir_path }}/{{ ft1_local_path }} does not exist and is not a directory"
+    success_msg: "PASS - Path {{ lab_dir_path }}/{{ ft1_local_path }} exists and is a directory"
+  ignore_errors: true
+
+- name: Checking directory permissions...
+  assert:
+    that:
+      - p.stat.isdir is defined and p.stat.isdir and p.stat.mode == "{{ ft1_file_mode }}"
+    fail_msg: "FAIL - Permissions {{ lab_dir_path }}/{{ ft1_local_path }} not {{ ft1_file_mode }}"
+    success_msg: "PASS - Permissions {{ lab_dir_path }}/{{ ft1_local_path }} are {{ ft1_file_mode }}"
+  #when: p.stat.isdir is defined and p.stat.isdir
+  ignore_errors: true
+
+#Checking file
+- name: Preparing check for {{ ft1_file_name }} under {{ lab_dir_path }}/{{ ft1_local_path }} - file tasks
+  stat:
+    path: "{{ lab_dir_path }}/{{ ft1_local_path }}/{{ ft1_file_name }}"
+  register: p
+- name: Checking if file exists...
+  assert:
+    that:
+      - p.stat.exists
+    fail_msg: "FAIL - File {{ lab_dir_path }}/{{ ft1_local_path }}/{{ ft1_file_name }} does not exist "
+    success_msg: "PASS - File {{ lab_dir_path }}/{{ ft1_local_path }}/{{ ft1_file_name }} exists"
+  ignore_errors: true
+
+- name: Checking file permissions...
+  assert:
+    that:
+      - p.stat.exists and p.stat.mode == "{{ ft1_file_mode }}"
+    fail_msg: "FAIL - Permissions {{ lab_dir_path }}/{{ ft1_local_path }}/{{ ft1_file_name }} not {{ ft1_file_mode }}"
+    success_msg: "PASS - Permissions {{ lab_dir_path }}/{{ ft1_local_path }}/{{ ft1_file_name }} are {{ ft1_file_mode }}"
+  #when: p.stat.isdir is defined and p.stat.isdir
+  ignore_errors: true

@@ -6,5 +6,7 @@ lab_dir_mode: "0755"
 
 #ft1 = File task 1 and so on...
 ft1_file_name: "local.conf"
+ft1_file_mode: "0640"
 #_local_path is where do you want the file created for any file task relative to lab folder
 ft1_local_path: "local/myetc"
+ft1_local_path_mode: "0700"
