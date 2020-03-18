@@ -18,9 +18,9 @@
 - name: Checking directory permissions...
   assert:
     that:
-      - p.stat.isdir is defined and p.stat.isdir and p.stat.mode == "{{ ft1_file_mode }}"
-    fail_msg: "FAIL - Permissions {{ lab_dir_path }}/{{ ft1_local_path }} not {{ ft1_file_mode }}"
-    success_msg: "PASS - Permissions {{ lab_dir_path }}/{{ ft1_local_path }} are {{ ft1_file_mode }}"
+      - p.stat.isdir is defined and p.stat.isdir and p.stat.mode == "{{ ft1_local_path_mode }}"
+    fail_msg: "FAIL - Permissions {{ lab_dir_path }}/{{ ft1_local_path }} not {{ ft1_local_path_mode }}"
+    success_msg: "PASS - Permissions {{ lab_dir_path }}/{{ ft1_local_path }} are {{ ft1_local_path_mode }}"
   #when: p.stat.isdir is defined and p.stat.isdir
   ignore_errors: true
 
